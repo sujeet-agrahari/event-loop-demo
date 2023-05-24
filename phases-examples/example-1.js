@@ -1,4 +1,5 @@
-// poll event queue can delay the timers
+// takeaway -> poll event queue can delay the timers
+// event loop will finish the current process before picking the least timed out task from timers
 const fs = require('fs');
 
 function someAsyncOperation(callback) {
