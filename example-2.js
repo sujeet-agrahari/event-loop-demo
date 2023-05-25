@@ -1,4 +1,4 @@
-// process.nextTick will be called instantly in the next phase i.e. end of the current loop
+// takeaway -> process.nextTick will be called instantly in the next phase i.e. end of the current loop
 const fs = require('fs');
 
 console.log('Start');
