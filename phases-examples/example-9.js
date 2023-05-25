@@ -7,6 +7,7 @@ Promise.resolve().then(() => console.log('promise1')).then(() => console.log('pr
 setImmediate(() => console.log('setImmediate'))
 setTimeout(() => console.log('setTimeOut'), 0)
 process.nextTick(() => console.log('process.nextTick'))
+
 fs.readFile('test.txt', 'utf-8', (err, data) => {
   console.log('file')
 })
