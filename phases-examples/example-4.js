@@ -1,10 +1,10 @@
 // timeout_vs_immediate.js
+// This is un-deterministic, it can be determined
+// https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#setimmediate-vs-settimeout
 
-// it will go to timer, poll and then check phase
-// takeaway -> normal execution order, nothing to wait for or do in poll phase so it will first execute the check phase
 setTimeout(() => {
   console.log('timeout');
-}, 0);
+}, 1);
 
 setImmediate(() => {
   console.log('immediate');
