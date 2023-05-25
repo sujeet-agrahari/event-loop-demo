@@ -14,7 +14,7 @@ function checkEventLoop() {
 checkEventLoop();
 
 // Read a file and start a timer
-fs.readFile('long.txt', (err, data) => {
+fs.readFile('test.txt', (err, data) => {
   if (err) throw err;
   console.log('File read complete');
 });
