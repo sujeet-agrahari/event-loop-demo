@@ -1,4 +1,5 @@
 function enqueueTasks() {
+  console.log('ham first...ham first')
   Promise.resolve().then(() => console.log('Promise reaction 1'));
   queueMicrotask(() => console.log('queueMicrotask 1'));
   process.nextTick(() => console.log('nextTick 1'));
