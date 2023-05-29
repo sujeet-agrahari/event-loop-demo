@@ -78,6 +78,26 @@ Regarding `process.nextTick()` and Promise callbacks, they are considered microt
 ```
 This diagram shows that process.nextTick() and microtasks are executed after the current task in any phase and after the complete task in the current phase, before moving on to the next phase.
 
+```
+
+// process.nextTick() will be called after current process is finished in any phase
+while (TIMERS_OR_EVENTS_POSSIBLE) {
+    if (shouldExecuteTimers(now)) doExecuteExpiredTimers();
+    handleProcessNextTick();
+    while (callback = pollForEvents() && count++ < MAX_POLL) {
+      if (callback.eventType === 'close') {
+        addToCloseQueue(callback);
+        continue;
+      }
+      callback();
+    }
+    handleProcessNextTick();
+    if (setImmediateQueue) runSetImmediateQueue();
+    handleProcessNextTick();
+    if (closeQueue) runCloseQueue();
+    handleProcessNextTick();
+  }
+  ```
 
 ### Resources on Event Loop
 1. [How, in general, does Node.js handle 10,000 concurrent requests?](https://stackoverflow.com/questions/34855352/how-in-general-does-node-js-handle-10-000-concurrent-requests/34857298#34857298)
